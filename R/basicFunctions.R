@@ -36,5 +36,3 @@ library(roxygen2)
 #' x %!in% y
 '%!idx%' <- function(x,y) x[!('%in%'(x,y))]
 
-
-

@@ -7,3 +7,4 @@ Maintainer: Angelo Bartsch <angelobj@gmail.com>
 License: None
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.1.9000
