@@ -1,19 +1,14 @@
 ## Steps to create an R package. If package exists, jump to 4
 # 1.- Set working directory to parent folder
 #setwd("parent_directory")
-# 2.- Create a folder to store functions and documents
-#create("basicFunctions")
+# 2.- Create a New project from RStudio
 # 3.- Create an R file with all the functions inside the R folder of the created folder in 2
-# 4.- After creating the functions, change the WD to the child created folder
-#setwd("./basicFunctions")
-# 5.- Generate documentation based on the functions
+# Select the file to be included when creating the New Project
+# 4.- Generate documentation based on the functions
 #document()
 library(devtools)
 library(roxygen2)
-# 6.- We are ready to install and load the package
-#setwd("..")
-# install("basicFunctions")
-# library("basicFunctions")
+# 5.- Commit the package from within RStudio by opening the project and then in the right upper panel
 # Check documentation
 # ?'%!in%'
 
@@ -40,24 +35,6 @@ library(roxygen2)
 #' x<-c(1,2,3);y<-c(3)
 #' x %!in% y
 '%!idx%' <- function(x,y) x[!('%in%'(x,y))]
-
-#' Function to update a package based on its name.
-#' @param pckgeName Name of the package to update. Your working directory should be the parent folder of the package
-#' @examples
-#' updatePackage()
-updatePackage<-function(pckgeName=NULL){
-  if(is.null(pckgeName))
-    stop("Package name must be provided.")
-  if(!dir.exists(paste0("./",pckgeName)))
-      stop("Directory does not exists!. Make sure to use create('pckgeName')")
-    setwd(paste0("./",pckgeName))
-    # Generate documentation based on the functions
-    document()
-    # We are ready to install and load the package
-    setwd("..")
-    install(pckgeName)
-}
-
 
 
 
