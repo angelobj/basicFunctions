@@ -74,6 +74,7 @@ circleFun<-function(rx=1,ry=1,start=0,end=360,length=360,xstart=0,ystart=0){
              y=ry*sin(angle)+ystart
   )
 }
+
 #' Function to find elements in 'x' greater than the treshold 'tsh' for shading SPM.
 #' @param x Vector
 #' @param tsh Numeric variable
@@ -89,6 +90,20 @@ find_diffs<-function(x,tsh){
   data.frame(
     'min_shade'=sort(c(points[1],points[which(diff(points)!=1)+1])),
     'max_shade'=sort(c(points[which(diff(points)!=1)],points[length(points)])))
+}
+
+#' Function to plot circles in ggplot
+#' @param rx Radius of the circle in x axis
+#' @param ry Radius of the circle in y axis
+#' @param start Angle (in degrees) from where to start drawing (from vertical)
+#' @param end Angle (in degrees) to end the drawing
+#' @param xstart X coordinate of the origin of the circle
+#' @param ystart Y coordinate of the origin of the circle
+circleFun<-function(rx=1,ry=1,start=0,end=360,length=360,xstart=0,ystart=0){
+  angle<-seq(from=-start+90,to=-end+90,length.out=length)*pi/180
+  data.frame(x=rx*cos(angle)+xstart,
+             y=ry*sin(angle)+ystart
+  )
 }
 
 #' Get lower triangle of a square matrix (for example the correlation matrix) to plot with ggplot.
