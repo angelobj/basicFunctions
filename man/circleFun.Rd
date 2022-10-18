@@ -13,6 +13,16 @@ circleFun(
   xstart = 0,
   ystart = 0
 )
+
+circleFun(
+  rx = 1,
+  ry = 1,
+  start = 0,
+  end = 360,
+  length = 360,
+  xstart = 0,
+  ystart = 0
+)
 }
 \arguments{
 \item{rx}{Radius of the circle in x axis}
@@ -28,5 +38,7 @@ circleFun(
 \item{ystart}{Y coordinate of the origin of the circle}
 }
 \description{
+Function to plot circles in ggplot
+
 Function to plot circles in ggplot
 }
