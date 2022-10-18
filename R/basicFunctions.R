@@ -40,6 +40,17 @@ library(roxygen2)
 #' @export
 `%!idx%` <- function(x,y)  x[!('%in%'(x,y))]
 
+#' Function to find intersect of 'x' and 'y'.
+#' @name idx
+#' @param x Vector to look for
+#' @param y Elements to exclude from 'x'
+#' @keywords !in
+#' @examples
+#' x<-c(1,2,3);y<-c(3)
+#' x %idx% y
+#' @export
+`%idx%` <- function(x,y)  x[('%in%'(x,y))]
+
 #' Function to find elements in 'x' greater than the treshold 'tsh' for shading SPM.
 #' @param x Vector
 #' @param tsh Numeric variable
