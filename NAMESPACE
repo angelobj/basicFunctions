@@ -2,6 +2,7 @@
 
 export("%!idx%")
 export("%!in%")
+export("%idx%")
 export(circleFun)
 export(find_diffs)
 export(lower_tri)
