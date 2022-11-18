@@ -2,7 +2,7 @@
 % Please edit documentation in R/basicFunctions.R
 \name{upper_tri}
 \alias{upper_tri}
-\title{Get upeer triangle of a square matrix (for example the correlation matrix) to plot with ggplot.}
+\title{Get upper triangle of a square matrix (for example the correlation matrix) to plot with ggplot.}
 \usage{
 upper_tri(mat)
 }
@@ -10,7 +10,7 @@ upper_tri(mat)
 \item{mat}{Squared Matrix}
 }
 \description{
-Get upeer triangle of a square matrix (for example the correlation matrix) to plot with ggplot.
+Get upper triangle of a square matrix (for example the correlation matrix) to plot with ggplot.
 }
 \examples{
 cor(longley) # Original Matrix

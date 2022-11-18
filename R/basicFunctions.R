@@ -126,7 +126,7 @@ lower_tri<-function(mat){
   return(mat)
 }
 
-#' Get upeer triangle of a square matrix (for example the correlation matrix) to plot with ggplot.
+#' Get upper triangle of a square matrix (for example the correlation matrix) to plot with ggplot.
 #' @param mat Squared Matrix
 #' @examples
 #' cor(longley) # Original Matrix
@@ -138,3 +138,23 @@ upper_tri <- function(mat){
   return(mat)
 }
 
+
+#' Set source file directory as working directory
+#' @param name R script file name
+#' source_wd()
+#' @export
+source_wd <- function(name=NULL) {
+  if(!require("stringr")) stop("Need stringr package")
+  if(!require("rstudioapi")) stop("Need rstudioapi package ")
+  wd <- rstudioapi::getSourceEditorContext()$path
+  if (!is.null(name)) {
+    if (substr(name, nchar(name) - 1, nchar(name)) != '.R')
+      name <- paste0(name, '.R')
+  }
+  else {
+    name <- stringr::word(wd, -1, sep='/')
+  }
+  wd <- gsub(wd, pattern=paste0('/', name), replacement = '')
+  no_print <- eval(expr=setwd(wd), envir = .GlobalEnv)
+  print(paste("Working Directory:",wd))
+}
