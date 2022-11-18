@@ -138,9 +138,13 @@ upper_tri <- function(mat){
   return(mat)
 }
 
-
 #' Set source file directory as working directory
+#' @param name R script file name
+#' source_wd()
+#' @export
 source_wd <- function(name=NULL) {
+  if(!require("stringr")) stop("Need stringr package")
+  if(!require("rstudioapi")) stop("Need rstudioapi package ")
   wd <- rstudioapi::getSourceEditorContext()$path
   if (!is.null(name)) {
     if (substr(name, nchar(name) - 1, nchar(name)) != '.R')
@@ -153,4 +157,3 @@ source_wd <- function(name=NULL) {
   no_print <- eval(expr=setwd(wd), envir = .GlobalEnv)
   print(paste("Working Directory:",wd))
 }
-source_wd()
