@@ -13,5 +13,5 @@ source_wd(name = NULL)
 Set source file directory as working directory
 }
 \examples{
-source_wd()
+#source_wd()
 }

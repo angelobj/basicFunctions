@@ -141,7 +141,7 @@ upper_tri <- function(mat){
 #' Set source file directory as working directory
 #' @param name R script file name
 #' @examples
-#' source_wd()
+#' #source_wd()
 #' @export
 source_wd <- function(name=NULL) {
   if(!requireNamespace("stringr")) stop("Need stringr package")
