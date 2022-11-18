@@ -144,8 +144,8 @@ upper_tri <- function(mat){
 #' source_wd()
 #' @export
 source_wd <- function(name=NULL) {
-  if(!require("stringr")) stop("Need stringr package")
-  if(!require("rstudioapi")) stop("Need rstudioapi package ")
+  if(!requireNamespace("stringr")) stop("Need stringr package")
+  if(!requireNamespace("rstudioapi")) stop("Need rstudioapi package ")
   wd <- rstudioapi::getSourceEditorContext()$path
   if (!is.null(name)) {
     if (substr(name, nchar(name) - 1, nchar(name)) != '.R')

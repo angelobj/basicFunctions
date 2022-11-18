@@ -7,9 +7,11 @@
 source_wd(name = NULL)
 }
 \arguments{
-\item{name}{R script file name
-source_wd()}
+\item{name}{R script file name}
 }
 \description{
 Set source file directory as working directory
+}
+\examples{
+source_wd()
 }
