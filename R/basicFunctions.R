@@ -5,6 +5,7 @@
 # 3.- Create an R file with all the functions inside the R folder of the created folder in 2
 # Select the file to be included when creating the New Project
 # 4.- Generate documentation based on the functions
+# roxygen2::roxygenise()
 #document()
 library(devtools)
 library(roxygen2)
@@ -157,4 +158,34 @@ source_wd <- function(name=NULL) {
   wd <- gsub(wd, pattern=paste0('/', name), replacement = '')
   no_print <- eval(expr=setwd(wd), envir = .GlobalEnv)
   print(paste("Working Directory:",wd))
+}
+
+#' Normalize based on min and max value.
+#' @param x Numeric vector
+#' @param scale Scaling factor
+#' @examples
+#' # x<-rnorm(10,10,1)
+#' # normalize(x)
+#' @export
+normalize<-function(x,scale=1){
+  if(is.null(min)) min<-min(x)
+  if(is.null(max)) max<-max(x)
+  (x-min(x))/(max(x)-min(x))*scale
+  }
+
+#' Set working Directory to current file folder
+#' @examples
+#' # set_sourceFile
+#' @export
+set_sourceFile <- function(name=NULL) {
+  wd <- rstudioapi::getSourceEditorContext()$path
+  if (!is.null(name)) {
+    if (substr(name, nchar(name) - 1, nchar(name)) != '.R')
+      name <- paste0(name, '.R')
+  }
+  else {
+    name <- stringr::word(wd, -1, sep='/')
+  }
+  wd <- gsub(wd, pattern=paste0('/', name), replacement = '')
+  no_print <- eval(expr=setwd(wd), envir = .GlobalEnv)
 }
