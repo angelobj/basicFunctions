@@ -158,3 +158,16 @@ source_wd <- function(name=NULL) {
   no_print <- eval(expr=setwd(wd), envir = .GlobalEnv)
   print(paste("Working Directory:",wd))
 }
+
+#' Normalize based on min and max value.
+#' @param x Numeric vector
+#' @param scale Scaling factor
+#' @examples
+#' # x<-rnorm(10,10,1)
+#' # normalize(x)
+#' @export
+normalize<-function(x,scale=1){
+  if(is.null(min)) min<-min(x)
+  if(is.null(max)) max<-max(x)
+  (x-min(x))/(max(x)-min(x))*scale
+  }
