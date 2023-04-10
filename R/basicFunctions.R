@@ -1,4 +1,4 @@
-## Steps to create an R package. If package exists, jump to 4
+## Steps to create an R package. Use Github Desktop!
 # 1.- Set working directory to parent folder
 #setwd("parent_directory")
 # 2.- Create a New project from RStudio
