@@ -180,9 +180,9 @@ normalize<-function(x,scale=1){
 #' @examples
 #' # pattern<-'blue bunny'
 #'  # x<-c('my favorite color is blue, my favorite animal is bunny','my favorite icecream flavor is blue bunny','My favorite color is blue')
-#' # multi_grep(pattern,x)
+#' # multi_grep(pattern,x) # Only strings containing both words next to each other are returned
 #' # pattern<-'blue&bunny'
-#' # multi_grep(pattern,x)
+#' # multi_grep(pattern,x) # All strings containing both words are returned, no matter if they are next to each other or not
 #' @export
 multi_grep<-function(pattern,x,index=F){
   vals<-sapply(strsplit(pattern,"&")[[1]],function(string){
