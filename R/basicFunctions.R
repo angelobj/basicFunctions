@@ -193,3 +193,22 @@ multi_grep<-function(pattern,x,index=F){
   if(!index) out<-x[out]
   return(out)
 }
+
+#' Interactive plot example to use when plotly legend is not the same as in ggplot2
+#' @param x Plot generated with ggplot2
+#' @param position Position of the legend (only right is implemented)
+#' @param col_width Width of the first column. Second column width is 12-col_width
+#' @export
+ggplotly_slides<-function(x,position='bottom',col_width=10){
+  # See if position bottom can change from columns to row and remove offset
+  require(ggpubr)
+  require(ggplotly)
+  require(shiny)
+  out_legend<-ggpubr::get_legend(x+theme(legend.position=position)) # Extracting the legend for the ggplotly!
+  fluidPage(
+    fluidRow(
+      column(col_width,plotly::renderPlotly(plotly::ggplotly(x+theme(legend.position="none")))),
+      column(12-col_width,renderPlot(ggpubr::as_ggplot(out_legend)))
+    )
+  )
+}
