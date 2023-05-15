@@ -18,6 +18,7 @@ Search multiple patterns inside a string.
 }
 \examples{
 # pattern<-'blue bunny'
+ # x<-c('my favorite color is blue, my favorite animal is bunny','my favorite icecream flavor is blue bunny','My favorite color is blue')
 # multi_grep(pattern,x)
 # pattern<-'blue&bunny'
 # multi_grep(pattern,x)

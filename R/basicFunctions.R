@@ -179,7 +179,7 @@ normalize<-function(x,scale=1){
 #' @param index By default index=F, returning the value of the strings instead of its index.
 #' @examples
 #' # pattern<-'blue bunny'
-#  # x<-c('my favorite color is blue, my favorite animal is bunny','my favorite icecream flavor is blue bunny','My favorite color is blue')
+#'  # x<-c('my favorite color is blue, my favorite animal is bunny','my favorite icecream flavor is blue bunny','My favorite color is blue')
 #' # multi_grep(pattern,x)
 #' # pattern<-'blue&bunny'
 #' # multi_grep(pattern,x)
