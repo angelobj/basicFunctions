@@ -171,4 +171,25 @@ normalize<-function(x,scale=1){
   if(is.null(min)) min<-min(x)
   if(is.null(max)) max<-max(x)
   (x-min(x))/(max(x)-min(x))*scale
-  }
+}
+
+#' Search multiple patterns inside a string.
+#' @param pattern Each pattern is separated by the & character
+#' @param x Vector of strings containing the values to search for
+#' @param index By default index=F, returning the value of the strings instead of its index.
+#' @examples
+#' # pattern<-'blue bunny'
+#  # x<-c('my favorite color is blue, my favorite animal is bunny','my favorite icecream flavor is blue bunny','My favorite color is blue')
+#' # multi_grep(pattern,x)
+#' # pattern<-'blue&bunny'
+#' # multi_grep(pattern,x)
+#' @export
+multi_grep<-function(pattern,x,index=F){
+  vals<-sapply(strsplit(pattern,"&")[[1]],function(string){
+    grepl(string,x)
+  })
+  idx<-sapply(1:nrow(vals),function(x){if(all(vals[x,])){x}else{NULL}})
+  out<-unlist(idx[lengths(idx) != 0])
+  if(!index) out<-x[out]
+  return(out)
+}
