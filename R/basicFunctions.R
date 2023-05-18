@@ -176,21 +176,23 @@ normalize<-function(x,scale=1){
 #' Search multiple patterns inside a string.
 #' @param pattern Each pattern is separated by the & character
 #' @param x Vector of strings containing the values to search for
-#' @param index By default index=F, returning the value of the strings instead of its index.
-#' @examples
+#' @param pattern By default returns the index of the vector containing the pattern.
+#' #' @examples
 #' # pattern<-'blue bunny'
 #' # x<-c('my favorite color is blue, my favorite animal is bunny','my favorite icecream flavor is blue bunny','My favorite color is blue')
 #' # multi_grep(pattern,x) # Only strings containing both words next to each other are returned
 #' # pattern<-'blue&bunny'
 #' # multi_grep(pattern,x) # All strings containing both words are returned, no matter if they are next to each other or not
 #' @export
-multi_grep<-function(pattern,x,index=F){
+multi_grep<-function(pattern,x,type='index'){
   vals<-sapply(strsplit(pattern,"&")[[1]],function(string){
     grepl(string,x)
   })
   idx<-sapply(1:nrow(vals),function(x){if(all(vals[x,])){x}else{NULL}})
   out<-unlist(idx[lengths(idx) != 0])
-  if(!index) out<-x[out]
+  if(type=='index'){out}
+  else if(type=='value'){out<-x[out]}
+  else if(type=='logical'){out<-x %in%x[out]}
   return(out)
 }
 
