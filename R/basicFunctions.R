@@ -229,7 +229,7 @@ ggplotly_slides<-function(x,position='bottom',col_width=10){
 #' @seealso \code{\link[config]{get}}
 #' @export
 get_config <- function(key,
-                       default_file = character(0),
+                       default_file = 'config.yml',
                        default = NULL,
                        verbose = FALSE) {
 
