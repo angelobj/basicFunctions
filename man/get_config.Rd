@@ -4,7 +4,7 @@
 \alias{get_config}
 \title{Safely retrieve configuration values from YAML config files}
 \usage{
-get_config(key, default_file = config_file, default = NULL, verbose = FALSE)
+get_config(key, default_file = character(0), default = NULL, verbose = FALSE)
 }
 \arguments{
 \item{key}{Character scalar. Name of the configuration key to retrieve.
@@ -13,96 +13,17 @@ Supports nested keys using dot notation (e.g. `"database.host"`).}
 \item{default_file}{Character vector of file paths to search if the local
 `config.yml` does not contain the requested key. Files are searched in order.}
 
-\item{default}{Value returned if the key is not found in any config file.
-Default is `NULL`.}
+\item{default}{Value returned if the key is not found in any config file.}
 
 \item{verbose}{Logical. If `TRUE`, prints messages indicating which file
-provided the configuration value. Default is `FALSE`.}
+provided the configuration value.}
 }
 \value{
-Returns the configuration value if found. Otherwise returns `default`
-(or `NULL` if no default is provided).
+The configuration value if found; otherwise `default`.
 }
 \description{
-`get_config()` retrieves a configuration value from one or more YAML configuration
-files using the \pkg{config} package. The function attempts to read a local
-`config.yml` file first (typically in the working directory), then falls back to
-additional file paths supplied via `default_file`.
-}
-\details{
-The function is designed to be **safe and non-throwing**:
-\itemize{
-  \item Missing files are skipped silently.
-  \item Missing keys return `default`.
-  \item YAML parsing errors are caught and treated as missing files.
-}
-
-Nested configuration keys can be accessed using dot notation (e.g. `"mysql.user"`).
-
-
-Search order:
-\enumerate{
-  \item Local `config.yml` in the working directory.
-  \item Each file listed in `default_file`, in order.
-}
-
-If a file exists but does not contain the requested key, the function continues
-searching remaining files.
-}
-\section{Error Handling}{
-
-The function will **never throw an error** due to:
-\itemize{
-  \item Missing config files
-  \item Missing keys
-  \item YAML parsing failures
-}
-
-This makes it safe for use in:
-\itemize{
-  \item Shiny applications
-  \item Cron jobs
-  \item Server startup scripts
-}
-}
-
-\section{Nested Keys}{
-
-Nested values can be accessed using dot notation:
-
-\preformatted{
-database:
-  host: localhost
-  port: 3306
-}
-
-Access using:
-
-\preformatted{
-get_config("database.host")
-}
-}
-
-\examples{
-# Basic usage
-get_config("woo_url")
-
-# With fallback config locations
-get_config(
-  "user",
-  default_file = c(
-    "/config.yml",
-    "/parent/config.yml"
-  )
-)
-
-# With default value
-get_config("api.timeout", default = 30)
-
-# Verbose logging
-get_config("woo_url", verbose = TRUE)
-
+Safely retrieve configuration values from YAML config files
 }
 \seealso{
-\code{\link[config]{get}} for low-level config access.
+\code{\link[config]{get}}
 }
