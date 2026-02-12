@@ -2,7 +2,7 @@ Package: basicFunctions
 Type: Package
 Title: Functions for Analyzing Data
 Description: Not much more to say
-Version: 0.1.0
+Version: 0.1.1
 Author: Angelo Bartsch
 Maintainer: Angelo Bartsch <angelobj@gmail.com>
 License: None
