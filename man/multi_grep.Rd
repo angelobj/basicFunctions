@@ -4,22 +4,19 @@
 \alias{multi_grep}
 \title{Search multiple patterns inside a string.}
 \usage{
-multi_grep(pattern, x, index = F)
+multi_grep(pattern, x, type = "index")
 }
 \arguments{
-\item{pattern}{Each pattern is separated by the & character}
+\item{pattern}{By default returns the index of the vector containing the pattern.
+#' @examples
+# pattern<-'blue bunny'
+# x<-c('my favorite color is blue, my favorite animal is bunny','my favorite icecream flavor is blue bunny','My favorite color is blue')
+# multi_grep(pattern,x) # Only strings containing both words next to each other are returned
+# pattern<-'blue&bunny'
+# multi_grep(pattern,x) # All strings containing both words are returned, no matter if they are next to each other or not}
 
 \item{x}{Vector of strings containing the values to search for}
-
-\item{index}{By default index=F, returning the value of the strings instead of its index.}
 }
 \description{
 Search multiple patterns inside a string.
-}
-\examples{
-# pattern<-'blue bunny'
- # x<-c('my favorite color is blue, my favorite animal is bunny','my favorite icecream flavor is blue bunny','My favorite color is blue')
-# multi_grep(pattern,x) # Only strings containing both words next to each other are returned
-# pattern<-'blue&bunny'
-# multi_grep(pattern,x) # All strings containing both words are returned, no matter if they are next to each other or not
 }
